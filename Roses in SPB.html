@@ -1,0 +1,1796 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roses in SPB — Доставка цветов в Санкт-Петербурге</title>
+    <meta name="description" content="Свежие цветы с доставкой по Санкт-Петербургу. Букеты от 1500₽. Доставка за 2 часа. Работаем 24/7.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #d4a5a5;
+            --primary-dark: #b88a8a;
+            --secondary: #f5e6e0;
+            --accent: #c9a227;
+            --text: #4a4a4a;
+            --text-light: #7a7a7a;
+            --white: #ffffff;
+            --cream: #faf7f5;
+            --rose: #e8d5d5;
+            --peony: #f0e0e0;
+            --tulip: #f5ebe0;
+            --mix: #f0e8e0;
+        }
+
+        @font-face {
+            font-family: 'Playfair';
+            src: local('Playfair Display'), local('Georgia');
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            src: local('Inter'), local('Segoe UI'), local('Arial');
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--cream);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-dark);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .phone {
+            font-weight: 600;
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .cart-btn {
+            position: relative;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--primary);
+            color: white;
+            font-size: 0.75rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--rose) 50%, var(--cream) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 165, 165, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 3.5rem;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-text .highlight {
+            color: var(--primary-dark);
+            position: relative;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .hero-features {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(212, 165, 165, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 165, 165, 0.5);
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* CSS Flower Bouquet */
+        .bouquet {
+            position: relative;
+            width: 300px;
+            height: 400px;
+        }
+
+        .flower {
+            position: absolute;
+            bottom: 0;
+        }
+
+        .flower-1 {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .flower-2 {
+            left: 20%;
+            transform: rotate(-15deg) scale(0.8);
+        }
+
+        .flower-3 {
+            right: 20%;
+            transform: rotate(15deg) scale(0.8);
+        }
+
+        .flower-4 {
+            left: 35%;
+            transform: rotate(-8deg) scale(0.9);
+            bottom: 20px;
+        }
+
+        .flower-5 {
+            right: 35%;
+            transform: rotate(8deg) scale(0.9);
+            bottom: 20px;
+        }
+
+        .stem {
+            width: 4px;
+            height: 150px;
+            background: linear-gradient(to top, #4a7c59, #6b9b7a);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        .rose {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            margin-bottom: -20px;
+        }
+
+        .rose-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, #c41e3a 0%, #8b1538 100%);
+            border-radius: 50%;
+            z-index: 3;
+        }
+
+        .petal {
+            position: absolute;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            background: linear-gradient(135deg, #e8b4b4 0%, #d4a5a5 50%, #c41e3a 100%);
+            box-shadow: inset -2px -2px 4px rgba(0,0,0,0.1);
+        }
+
+        .petal-1 { width: 50px; height: 50px; top: 5px; left: 15px; transform: rotate(-20deg); }
+        .petal-2 { width: 50px; height: 50px; top: 5px; right: 15px; transform: rotate(20deg); }
+        .petal-3 { width: 45px; height: 45px; bottom: 10px; left: 5px; transform: rotate(-45deg); }
+        .petal-4 { width: 45px; height: 45px; bottom: 10px; right: 5px; transform: rotate(45deg); }
+        .petal-5 { width: 40px; height: 40px; top: 20px; left: 20px; transform: rotate(0deg); z-index: 2; background: linear-gradient(135deg, #f0c4c4 0%, #e8b4b4 100%); }
+
+        .leaf {
+            position: absolute;
+            width: 30px;
+            height: 15px;
+            background: linear-gradient(135deg, #6b9b7a 0%, #4a7c59 100%);
+            border-radius: 0 50% 0 50%;
+            bottom: 50px;
+        }
+
+        .leaf-left {
+            left: -10px;
+            transform: rotate(-30deg);
+        }
+
+        .leaf-right {
+            right: -10px;
+            transform: rotate(30deg) scaleX(-1);
+        }
+
+        /* Catalog Section */
+        .catalog {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.5rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary-dark);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .product-visual {
+            height: 250px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-visual.rose-bg { background: linear-gradient(135deg, #f8e8e8 0%, #f0d5d5 100%); }
+        .product-visual.peony-bg { background: linear-gradient(135deg, #f5e0e0 0%, #ebd0d0 100%); }
+        .product-visual.tulip-bg { background: linear-gradient(135deg, #faf0e8 0%, #f5e5d5 100%); }
+        .product-visual.mix-bg { background: linear-gradient(135deg, #f5ebe8 0%, #ebe0d5 100%); }
+        .product-visual.plant-bg { background: linear-gradient(135deg, #e8f0e8 0%, #d5e5d5 100%); }
+
+        /* CSS Flower Icons */
+        .icon-rose {
+            width: 100px;
+            height: 100px;
+            position: relative;
+        }
+
+        .icon-peony {
+            width: 120px;
+            height: 100px;
+            position: relative;
+        }
+
+        .icon-peony .p-center {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, #f5d5d5 0%, #e8b4b4 100%);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .icon-peony .p-petal {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #fae8e8 0%, #f0c4c4 100%);
+            border-radius: 50%;
+            opacity: 0.9;
+        }
+
+        .icon-tulip {
+            width: 80px;
+            height: 100px;
+            position: relative;
+        }
+
+        .tulip-head {
+            width: 60px;
+            height: 70px;
+            background: linear-gradient(to bottom, #f5d5c0 0%, #e8c4a8 100%);
+            border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .tulip-stem {
+            width: 4px;
+            height: 40px;
+            background: #6b9b7a;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .product-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .add-to-cart {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: none;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        /* Delivery Section */
+        .delivery {
+            background: var(--secondary);
+            padding: 5rem 2rem;
+        }
+
+        .delivery-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .delivery-map {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .zone {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .zone:hover {
+            transform: translateX(10px);
+        }
+
+        .zone-1 { background: linear-gradient(to right, rgba(212, 165, 165, 0.2), transparent); border-left: 4px solid var(--primary); }
+        .zone-2 { background: linear-gradient(to right, rgba(212, 165, 165, 0.1), transparent); border-left: 4px solid #d4a5a5; }
+        .zone-3 { background: linear-gradient(to right, rgba(212, 165, 165, 0.05), transparent); border-left: 4px solid #e8d5d5; }
+
+        .zone-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .zone-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .zone-price {
+            margin-left: auto;
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .about-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .about-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--rose) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .about-card h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .about-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 5rem 2rem;
+        }
+
+        .contact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-details {
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            color: var(--text);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Cart Modal */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: flex-end;
+        }
+
+        .cart-modal.active {
+            display: flex;
+        }
+
+        .cart-sidebar {
+            width: 400px;
+            max-width: 100%;
+            height: 100%;
+            background: white;
+            padding: 2rem;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.3s;
+        }
+
+        .cart-modal.active .cart-sidebar {
+            transform: translateX(0);
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .cart-header h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-visual {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .cart-item-info p {
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .qty-btn {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .remove-item {
+            color: #e74c3c;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .cart-total {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--secondary);
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--text-light);
+        }
+
+        /* Order Modal */
+        .order-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .order-modal.active {
+            display: flex;
+        }
+
+        .order-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .order-form h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transform: translateX(400px);
+            transition: transform 0.3s;
+            z-index: 4000;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .footer-section a {
+            color: #aaa;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #555;
+            color: #aaa;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-visual {
+                height: 300px;
+            }
+
+            .delivery-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cart-sidebar {
+                width: 100%;
+            }
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--cream);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <svg class="logo-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 20 C30 20 20 40 20 55 C20 75 35 90 50 90 C65 90 80 75 80 55 C80 40 70 20 50 20 Z" fill="#d4a5a5" opacity="0.3"/>
+                    <path d="M50 30 C40 30 35 45 35 55 C35 65 42 75 50 75 C58 75 65 65 65 55 C65 45 60 30 50 30 Z" fill="#c41e3a"/>
+                    <path d="M50 10 L50 30 M50 75 L50 95" stroke="#4a7c59" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M35 60 Q25 55 20 50 M65 60 Q75 55 80 50" stroke="#6b9b7a" stroke-width="2" fill="none"/>
+                    <ellipse cx="35" cy="55" rx="8" ry="4" fill="#6b9b7a" transform="rotate(-30 35 55)"/>
+                    <ellipse cx="65" cy="55" rx="8" ry="4" fill="#6b9b7a" transform="rotate(30 65 55)"/>
+                </svg>
+                Roses in SPB
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#catalog">Каталог</a></li>
+                <li><a href="#delivery">Доставка</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+
+            <div class="nav-right">
+                <a href="tel:+78125555555" class="phone">+7 (812) 555-55-55</a>
+                <button class="cart-btn" onclick="toggleCart()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 2L6 7H3L5 20H19L21 7H18L15 2H9Z"/>
+                        <path d="M9 11V17M15 11V17"/>
+                    </svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="mobile-menu-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12H21M3 6H21M3 18H21"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Свежие цветы с доставкой по <span class="highlight">Санкт-Петербургу</span></h1>
+                <p>Букеты от 1 500 ₽ • Доставка за 2 часа • Работаем 24/7</p>
+                <div class="hero-features">
+                    <div class="feature">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#c9a227">
+                            <path d="M12 2L15 9H22L16 14L18 21L12 17L6 21L8 14L2 9H9L12 2Z"/>
+                        </svg>
+                        <span>Гарантия свежести 7 дней</span>
+                    </div>
+                    <div class="feature">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#c9a227">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        <span>Бесплатная открытка</span>
+                    </div>
+                </div>
+                <a href="#catalog" class="btn-primary">Заказать букет</a>
+            </div>
+            <div class="hero-visual">
+                <div class="bouquet floating">
+                    <div class="flower flower-2">
+                        <div class="rose">
+                            <div class="petal petal-3"></div>
+                            <div class="petal petal-4"></div>
+                            <div class="petal petal-1"></div>
+                            <div class="petal petal-2"></div>
+                            <div class="petal petal-5"></div>
+                            <div class="rose-center"></div>
+                        </div>
+                        <div class="stem"></div>
+                        <div class="leaf leaf-left"></div>
+                    </div>
+                    <div class="flower flower-3">
+                        <div class="rose">
+                            <div class="petal petal-3"></div>
+                            <div class="petal petal-4"></div>
+                            <div class="petal petal-1"></div>
+                            <div class="petal petal-2"></div>
+                            <div class="petal petal-5"></div>
+                            <div class="rose-center"></div>
+                        </div>
+                        <div class="stem"></div>
+                        <div class="leaf leaf-right"></div>
+                    </div>
+                    <div class="flower flower-4">
+                        <div class="rose">
+                            <div class="petal petal-3"></div>
+                            <div class="petal petal-4"></div>
+                            <div class="petal petal-1"></div>
+                            <div class="petal petal-2"></div>
+                            <div class="petal petal-5"></div>
+                            <div class="rose-center"></div>
+                        </div>
+                        <div class="stem"></div>
+                    </div>
+                    <div class="flower flower-5">
+                        <div class="rose">
+                            <div class="petal petal-3"></div>
+                            <div class="petal petal-4"></div>
+                            <div class="petal petal-1"></div>
+                            <div class="petal petal-2"></div>
+                            <div class="petal petal-5"></div>
+                            <div class="rose-center"></div>
+                        </div>
+                        <div class="stem"></div>
+                    </div>
+                    <div class="flower flower-1">
+                        <div class="rose">
+                            <div class="petal petal-3"></div>
+                            <div class="petal petal-4"></div>
+                            <div class="petal petal-1"></div>
+                            <div class="petal petal-2"></div>
+                            <div class="petal petal-5"></div>
+                            <div class="rose-center"></div>
+                        </div>
+                        <div class="stem"></div>
+                        <div class="leaf leaf-left"></div>
+                        <div class="leaf leaf-right"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section class="catalog" id="catalog">
+        <div class="section-title">
+            <h2>Наш каталог</h2>
+            <p>Выберите идеальный букет для любого повода</p>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterProducts('all')">Все</button>
+            <button class="filter-btn" onclick="filterProducts('rose')">Розы</button>
+            <button class="filter-btn" onclick="filterProducts('peony')">Пионы</button>
+            <button class="filter-btn" onclick="filterProducts('tulip')">Тюльпаны</button>
+            <button class="filter-btn" onclick="filterProducts('mix')">Микс</button>
+            <button class="filter-btn" onclick="filterProducts('plant')">Растения</button>
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+            <!-- Products will be inserted here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Delivery Section -->
+    <section class="delivery" id="delivery">
+        <div class="delivery-content">
+            <div>
+                <div class="section-title" style="text-align: left;">
+                    <h2>Доставка по Санкт-Петербургу</h2>
+                    <p>Быстрая и бережная доставка цветов в любой район города</p>
+                </div>
+                <div style="margin-top: 2rem;">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div style="width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#d4a5a5">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Адрес магазина</h4>
+                            <p>Невский проспект, 1</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div style="width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#d4a5a5">
+                                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Время работы</h4>
+                            <p>Ежедневно 8:00–22:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="delivery-map">
+                <h3 style="margin-bottom: 1.5rem; font-family: 'Playfair Display', serif;">Зоны доставки</h3>
+                <div class="zone zone-1">
+                    <div class="zone-info">
+                        <h4>Центр</h4>
+                        <p>Адмиралтейский, Центральный район</p>
+                    </div>
+                    <div class="zone-price">300 ₽</div>
+                </div>
+                <div class="zone zone-2">
+                    <div class="zone-info">
+                        <h4>Ближайшие районы</h4>
+                        <p>Василеостровский, Петроградский, Московский</p>
+                    </div>
+                    <div class="zone-price">500 ₽</div>
+                </div>
+                <div class="zone zone-3">
+                    <div class="zone-info">
+                        <h4>Спальный районы и пригород</h4>
+                        <p>Невский, Красногвардейский, Пушкин, Павловск</p>
+                    </div>
+                    <div class="zone-price">800 ₽</div>
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                    * При заказе от 5 000 ₽ доставка бесплатная
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-title">
+            <h2>Почему выбирают нас</h2>
+            <p>9 лет создаем красоту и радуем наших клиентов</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <div class="about-icon">🌸</div>
+                <h3>Свежие цветы</h3>
+                <p>Прямые поставки от лучших производителей. Гарантия свежести 7 дней или вернём деньги</p>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">✨</div>
+                <h3>Опытные флористы</h3>
+                <p>Наши мастера имеют более 10 лет опыта. Каждый букет — произведение искусства</p>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">🚚</div>
+                <h3>Быстрая доставка</h3>
+                <p>Доставляем за 2 часа по всему городу. Точное время согласовываем заранее</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2>Свяжитесь с нами</h2>
+                <p>Готовы помочь с выбором и ответить на все вопросы</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h4>Телефон</h4>
+                            <p>+7 (812) 555-55-55</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h4>Адрес</h4>
+                            <p>Санкт-Петербург, Невский проспект, 1</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>hello@spbroses.ru</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">💬</div>
+                        <div>
+                            <h4>Мессенджеры</h4>
+                            <p>WhatsApp, Telegram: +7 (812) 555-55-55</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form" onsubmit="handleContactSubmit(event)">
+                <h3 style="margin-bottom: 1.5rem; font-family: 'Playfair Display', serif;">Написать нам</h3>
+                <div class="form-group">
+                    <label>Ваше имя</label>
+                    <input type="text" required placeholder="Иван Иванов">
+                </div>
+                <div class="form-group">
+                    <label>Телефон</label>
+                    <input type="tel" required placeholder="+7 (___) ___-__-__">
+                </div>
+                <div class="form-group">
+                    <label>Сообщение</label>
+                    <textarea rows="4" placeholder="Что вас интересует?"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Отправить</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal" onclick="closeCartOnOverlay(event)">
+        <div class="cart-sidebar" onclick="event.stopPropagation()">
+            <div class="cart-header">
+                <h2>Корзина</h2>
+                <button class="close-cart" onclick="toggleCart()">✕</button>
+            </div>
+            <div id="cartItems">
+                <div class="empty-cart">
+                    <p>Корзина пуста</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Добавьте букеты из каталога</p>
+                </div>
+            </div>
+            <div id="cartFooter" style="display: none;">
+                <div class="cart-total">
+                    <span>Итого:</span>
+                    <span id="cartTotal">0 ₽</span>
+                </div>
+                <button class="checkout-btn" onclick="openOrderModal()">Оформить заказ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div class="order-modal" id="orderModal">
+        <div class="order-form">
+            <h2>Оформление заказа</h2>
+            <form onsubmit="handleOrderSubmit(event)">
+                <div class="form-group">
+                    <label>Ваше имя *</label>
+                    <input type="text" id="orderName" required placeholder="Иван Иванов">
+                </div>
+                <div class="form-group">
+                    <label>Телефон *</label>
+                    <input type="tel" id="orderPhone" required placeholder="+7 (999) 123-45-67">
+                </div>
+                <div class="form-group">
+                    <label>Адрес доставки *</label>
+                    <input type="text" id="orderAddress" required placeholder="ул. Примерная, д. 1, кв. 10">
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Дата</label>
+                        <input type="date" id="orderDate">
+                    </div>
+                    <div class="form-group">
+                        <label>Время</label>
+                        <input type="time" id="orderTime">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Комментарий</label>
+                    <textarea id="orderComment" rows="3" placeholder="Пожелания к букету, текст открытки..."></textarea>
+                </div>
+                <div style="background: #f5f5f5; padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span>Товары:</span>
+                        <span id="orderItemsTotal">0 ₽</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span>Доставка:</span>
+                        <span id="orderDelivery">300 ₽</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 1.1rem; border-top: 1px solid #ddd; padding-top: 0.5rem;">
+                        <span>Итого:</span>
+                        <span id="orderTotal">0 ₽</span>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit">Подтвердить заказ</button>
+                <button type="button" onclick="closeOrderModal()" style="width: 100%; margin-top: 0.5rem; padding: 0.75rem; background: transparent; border: 2px solid #ddd; border-radius: 10px; cursor: pointer;">Отмена</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">Товар добавлен в корзину</div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Roses in SPB</h3>
+                <p style="color: #aaa; font-size: 0.9rem;">Создаем красоту с 2015 года. Доставка свежих цветов по Санкт-Петербургу 24/7.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Каталог</h3>
+                <a href="#catalog">Розы</a>
+                <a href="#catalog">Пионы</a>
+                <a href="#catalog">Тюльпаны</a>
+                <a href="#catalog">Микс-букеты</a>
+            </div>
+            <div class="footer-section">
+                <h3>Информация</h3>
+                <a href="#delivery">Доставка</a>
+                <a href="#about">О нас</a>
+                <a href="#contact">Контакты</a>
+                <a href="#">Политика конфиденциальности</a>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <a href="tel:+78125555555">+7 (812) 555-55-55</a>
+                <a href="mailto:hello@spbroses.ru">hello@spbroses.ru</a>
+                <p style="color: #aaa; font-size: 0.9rem; margin-top: 1rem;">Невский проспект, 1<br>Санкт-Петербург</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Roses in SPB. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Products Data
+        const products = [
+            {
+                id: 1,
+                name: "Классические розы",
+                description: "25 красных роз 60 см",
+                price: 2500,
+                category: "rose",
+                icon: "rose",
+                bg: "rose-bg"
+            },
+            {
+                id: 2,
+                name: "Пионовый восторг",
+                description: "7 белых пионов",
+                price: 3200,
+                category: "peony",
+                icon: "peony",
+                bg: "peony-bg"
+            },
+            {
+                id: 3,
+                name: "Весенний микс",
+                description: "Тюльпаны и нарциссы",
+                price: 1800,
+                category: "tulip",
+                icon: "tulip",
+                bg: "tulip-bg"
+            },
+            {
+                id: 4,
+                name: "Романтика",
+                description: "101 роза 50 см",
+                price: 7500,
+                category: "rose",
+                icon: "rose",
+                bg: "rose-bg"
+            },
+            {
+                id: 5,
+                name: "Монстера",
+                description: "Комнатное растение в горшке",
+                price: 2800,
+                category: "plant",
+                icon: "plant",
+                bg: "plant-bg"
+            },
+            {
+                id: 6,
+                name: "Свадебный букет",
+                description: "Пионы и эустома",
+                price: 5500,
+                category: "mix",
+                icon: "mix",
+                bg: "mix-bg"
+            }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            updateCart();
+            
+            // Set default date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('orderDate').value = today;
+            document.getElementById('orderDate').min = today;
+        });
+
+        // Render Products
+        function renderProducts(filter = 'all') {
+            const grid = document.getElementById('productsGrid');
+            const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+            
+            grid.innerHTML = filtered.map(product => `
+                <div class="product-card" data-category="${product.category}">
+                    <div class="product-visual ${product.bg}">
+                        ${getProductIcon(product.icon)}
+                    </div>
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <div class="product-footer">
+                            <span class="price">${product.price.toLocaleString()} ₽</span>
+                            <button class="add-to-cart" onclick="addToCart(${product.id})" title="Добавить в корзину">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 5v14M5 12h14"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Get Product Icon SVG
+        function getProductIcon(type) {
+            const icons = {
+                rose: `<div class="icon-rose">
+                    <div class="petal petal-3"></div><div class="petal petal-4"></div>
+                    <div class="petal petal-1"></div><div class="petal petal-2"></div>
+                    <div class="petal petal-5"></div><div class="rose-center"></div>
+                </div>`,
+                peony: `<div class="icon-peony">
+                    <div class="p-petal" style="top:10px;left:10px;"></div>
+                    <div class="p-petal" style="top:10px;right:10px;"></div>
+                    <div class="p-petal" style="bottom:10px;left:20px;"></div>
+                    <div class="p-petal" style="bottom:10px;right:20px;"></div>
+                    <div class="p-petal" style="top:25px;left:0;"></div>
+                    <div class="p-petal" style="top:25px;right:0;"></div>
+                    <div class="p-center"></div>
+                </div>`,
+                tulip: `<div class="icon-tulip">
+                    <div class="tulip-head"></div>
+                    <div class="tulip-stem"></div>
+                </div>`,
+                mix: `<div style="font-size: 3rem;">💐</div>`,
+                plant: `<div style="width: 80px; height: 80px; position: relative;">
+                    <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 40px; height: 30px; background: #8b4513; border-radius: 5px;"></div>
+                    <div style="position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); width: 60px; height: 60px; background: linear-gradient(135deg, #228b22 0%, #006400 100%); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;"></div>
+                    <div style="position: absolute; bottom: 40px; left: 20px; width: 30px; height: 30px; background: #32cd32; border-radius: 50% 0 50% 50%; transform: rotate(-45deg);"></div>
+                    <div style="position: absolute; bottom: 40px; right: 20px; width: 30px; height: 30px; background: #32cd32; border-radius: 0 50% 50% 50%; transform: rotate(45deg);"></div>
+                </div>`
+            };
+            return icons[type] || icons.rose;
+        }
+
+        // Filter Products
+        function filterProducts(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase().includes(category) || (category === 'all' && btn.textContent === 'Все')) {
+                    btn.classList.add('active');
+                }
+            });
+            renderProducts(category);
+        }
+
+        // Cart Functions
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            
+            saveCart();
+            updateCart();
+            showToast(`${product.name} добавлен в корзину`);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            saveCart();
+            updateCart();
+        }
+
+        function updateQuantity(productId, delta) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    saveCart();
+                    updateCart();
+                }
+            }
+        }
+
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function updateCart() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartFooter = document.getElementById('cartFooter');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="empty-cart">
+                        <p>Корзина пуста</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Добавьте букеты из каталога</p>
+                    </div>
+                `;
+                cartFooter.style.display = 'none';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-visual ${item.bg}">${getProductIcon(item.icon)}</div>
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <p>${item.price.toLocaleString()} ₽</p>
+                            <div class="quantity-control">
+                                <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">−</button>
+                                <span>${item.quantity}</span>
+                                <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <p style="font-weight: 700; color: var(--primary-dark);">${(item.price * item.quantity).toLocaleString()} ₽</p>
+                            <span class="remove-item" onclick="removeFromCart(${item.id})">Удалить</span>
+                        </div>
+                    </div>
+                `).join('');
+                
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                cartTotal.textContent = total.toLocaleString() + ' ₽';
+                cartFooter.style.display = 'block';
+            }
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.toggle('active');
+            document.body.style.overflow = modal.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function closeCartOnOverlay(event) {
+            if (event.target === event.currentTarget) {
+                toggleCart();
+            }
+        }
+
+        // Order Modal
+        function openOrderModal() {
+            document.getElementById('cartModal').classList.remove('active');
+            const modal = document.getElementById('orderModal');
+            modal.classList.add('active');
+            
+            const itemsTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const delivery = itemsTotal >= 5000 ? 0 : 300;
+            const total = itemsTotal + delivery;
+            
+            document.getElementById('orderItemsTotal').textContent = itemsTotal.toLocaleString() + ' ₽';
+            document.getElementById('orderDelivery').textContent = delivery === 0 ? 'Бесплатно' : delivery + ' ₽';
+            document.getElementById('orderTotal').textContent = total.toLocaleString() + ' ₽';
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function handleOrderSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('orderName').value;
+            const phone = document.getElementById('orderPhone').value;
+            const address = document.getElementById('orderAddress').value;
+            const date = document.getElementById('orderDate').value;
+            const time = document.getElementById('orderTime').value;
+            const comment = document.getElementById('orderComment').value;
+            
+            const itemsTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const delivery = itemsTotal >= 5000 ? 0 : 300;
+            
+            const orderData = {
+                name,
+                phone,
+                address,
+                date,
+                time,
+                comment,
+                items: cart,
+                total: itemsTotal + delivery,
+                orderDate: new Date().toISOString()
+            };
+            
+            // Save to localStorage (in real app, send to server)
+            const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+            orders.push(orderData);
+            localStorage.setItem('orders', JSON.stringify(orders));
+            
+            // Clear cart
+            cart = [];
+            saveCart();
+            updateCart();
+            closeOrderModal();
+            
+            showToast('Заказ успешно оформлен! Мы свяжемся с вами.');
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            showToast('Сообщение отправлено! Мы ответим вам в ближайшее время.');
+            event.target.reset();
+        }
+
+        // Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
+            }
+        });
+    </script>
+</body>
+</html>
