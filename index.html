@@ -10,14 +10,47 @@
       font-family: Arial, sans-serif;
       background: #f5f5f5;
       color: #111;
+    }
+
+    header {
+      background: white;
+      padding: 20px 40px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .header-content {
+      max-width: 1000px;
+      margin: 1;
+    }
+
+    .header-content h2 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      color: #050505;
+    }
+
+    .header-content p {
+      margin: 4px 0;
+      color: #555;
+    }
+    .header a {
+      color: aqua;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    header a:hover {
+      text-decoration: underline;
+    }
+    main {
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
+      min-height: calc(100vh - 120px);
+      padding: 40px 20px;
     }
 
     .box {
-      background: white;
+      background: rgb(255, 255, 255);
       padding: 40px;
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
@@ -31,8 +64,8 @@
       font-size: 32px;
     }
 
-    p {
-      color: #666;
+    .box p {
+      color: #000000;
       margin-bottom: 30px;
     }
 
@@ -54,12 +87,21 @@
   </style>
 </head>
 <body>
-  <div class="box">
-    <h1>Моё портфолио</h1>
-    <p>Выберите проект для просмотра</p>
+  <header>
+    <div class="header-content">
+      <h2>Здравствуйте, меня зовут Александр</h2>
+      <p>Контакты для связи со мной:<a href="mailto:evd.delaal@gmail.com">evd.delaal@gmail.com</a>| Telegram: <a href="https://t.me/PALMMAAA">PALMMAAA</a></p>
+    </div>
+  </header>
 
-    <a class="btn" href="roses.html">Сайт 1 — Roses in SPB</a>
-    <a class="btn" href="fitforce.html">Сайт 2 — Fit Force</a>
-  </div>
+  <main>
+    <div class="box">
+      <h1>Моё портфолио</h1>
+      <p>Выберите проект для просмотра</p>
+
+      <a class="btn" href="roses.html">Сайт 1 — Roses in SPB</a>
+      <a class="btn" href="fitforce.html">Сайт 2 — Fit Force</a>
+    </div>
+  </main>
 </body>
 </html>
